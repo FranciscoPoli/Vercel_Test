@@ -7,6 +7,7 @@ export default function Home() {
       <div className={styles.container}>
         <header className={styles.header}>
           <h1>Welcome to Next.js</h1>
+          <h2>Making a change in v0 while the branch in git is 1 commit behind main</h2>
           <p>A modern React framework for production</p>
         </header>
 
