@@ -8,6 +8,7 @@ export default function Home() {
         <header className={styles.header}>
           <h1>Welcome to Next.js</h1>
           <p>A modern React framework for production</p>
+          <p>Adding a paragraph in Github main branch</p>
         </header>
 
         <section className={styles.features}>
