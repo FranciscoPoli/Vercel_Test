@@ -21,6 +21,11 @@ export default function Home() {
           </div>
 
           <div className={styles.featureCard}>
+            <h2>🚀 Test</h2>
+            <p>Adding a Card in v0</p>
+          </div>
+
+          <div className={styles.featureCard}>
             <h2>📦 Full-Stack</h2>
             <p>Build API routes and connect your database with Next.js backend support.</p>
           </div>
