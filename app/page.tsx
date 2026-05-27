@@ -11,12 +11,18 @@ export default function Home() {
           <p>A modern React framework for production</p>
           <p>Adding a paragraph in Github main branch</p>
           <p>another paragraph in Github main branch.  Will try to pull to v0</p>
+          <p>another paragraph in Github v0 branch.  Will try to pull to v0</p>
         </header>
 
         <section className={styles.features}>
           <div className={styles.featureCard}>
             <h2>🚀 Fast</h2>
             <p>Optimized for performance with automatic code splitting and optimization.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <h2>🚀 Test</h2>
+            <p>Adding a Card in v0</p>
           </div>
 
           <div className={styles.featureCard}>
