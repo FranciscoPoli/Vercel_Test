@@ -10,6 +10,7 @@ export default function Home() {
           <h2>Making a change in v0 while the branch in git is 1 commit behind main</h2>
           <p>A modern React framework for production</p>
           <p>Adding a paragraph in Github main branch</p>
+          <p>another paragraph in Github main branch.  Will try to pull to v0</p>
         </header>
 
         <section className={styles.features}>
