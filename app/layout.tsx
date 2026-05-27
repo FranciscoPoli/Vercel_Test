@@ -14,7 +14,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  canonical: 'https://example.com',
+  alternates: {
+    canonical: 'https://example.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
