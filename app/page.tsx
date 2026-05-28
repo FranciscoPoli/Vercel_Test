@@ -1,65 +1,37 @@
-import Link from 'next/link';
-import styles from './page.module.css';
+import { client } from '@/sanity/lib/client'
+import { allPagesQuery } from '@/sanity/lib/queries'
+import { SanityPage } from '@/sanity/types'
+import PageCard from '@/components/PageCard'
+import EmptyState from '@/components/EmptyState'
+import styles from './page.module.css'
 
-export default function Home() {
+export const revalidate = 60
+
+export default async function Home() {
+  const pages: SanityPage[] = await client.fetch(allPagesQuery)
+
   return (
     <main className={styles.main}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <h1>Welcome to Next.js</h1>
-          <h2>Making a change in v0 while the branch in git is 1 commit behind main</h2>
-          <p>A modern React framework for production</p>
-          <p>Adding a paragraph in Github main branch</p>
-          <p>another paragraph in Github main branch.  Will try to pull to v0</p>
-          <p>another paragraph in Github v0 branch.  Will try to pull to v0</p>
-        </header>
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <h1 className={styles.heading}>Pages</h1>
+          <a href="/studio" className={styles.studioLink}>
+            Open Studio
+          </a>
+        </div>
+      </header>
 
-        <section className={styles.features}>
-          <div className={styles.featureCard}>
-            <h2>🚀 Fast</h2>
-            <p>Optimized for performance with automatic code splitting and optimization.</p>
+      <section className={styles.content}>
+        {pages.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <div className={styles.grid}>
+            {pages.map((page) => (
+              <PageCard key={page._id} page={page} />
+            ))}
           </div>
-
-          <div className={styles.featureCard}>
-            <h2>🚀 Test</h2>
-            <p>Adding a Card in v0</p>
-          </div>
-
-          <div className={styles.featureCard}>
-            <h2>📦 Full-Stack</h2>
-            <p>Build API routes and connect your database with Next.js backend support.</p>
-          </div>
-
-          <div className={styles.featureCard}>
-            <h2>🎯 SEO Ready</h2>
-            <p>Built-in SEO optimization with metadata, canonical URLs, and more.</p>
-          </div>
-
-          <div className={styles.featureCard}>
-            <h2>📊 Analytics</h2>
-            <p>Integrated Vercel Analytics and Speed Insights for performance monitoring.</p>
-          </div>
-        </section>
-
-        <section className={styles.cta}>
-          <h2>Ready to build something amazing?</h2>
-          <div className={styles.buttons}>
-            <button className="button-primary">
-              <Link href="#docs">View Documentation</Link>
-            </button>
-            <button className="button-secondary">
-              <Link href="#examples">See Examples</Link>
-            </button>
-          </div>
-        </section>
-
-        <footer className={styles.footer}>
-          <p>Built with Next.js and Vercel</p>
-          <p style={{ fontSize: '0.875rem', marginTop: '0.5rem', opacity: 0.6 }}>
-            © {new Date().getFullYear()} Your Company. All rights reserved.
-          </p>
-        </footer>
-      </div>
+        )}
+      </section>
     </main>
-  );
+  )
 }
