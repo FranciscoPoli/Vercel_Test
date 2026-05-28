@@ -3,7 +3,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { bulkActionsTable } from 'sanity-plugin-bulk-actions-table'
+import { createBulkActionsTable } from 'sanity-plugin-bulk-actions-table'
 import { pageSchema } from './sanity/schemas/page'
 
 export default defineConfig({
@@ -14,9 +14,15 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
 
   plugins: [
-    structureTool(),
+    structureTool({
+      structure: (S, context) =>
+        S.list()
+          .title('Content')
+          .items([
+            createBulkActionsTable({ type: 'page', S, context, title: 'Pages' }),
+          ]),
+    }),
     visionTool(),
-    bulkActionsTable(),
   ],
 
   schema: {
