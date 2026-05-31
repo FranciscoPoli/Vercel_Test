@@ -9,8 +9,8 @@ export default defineConfig({
   name: 'default',
   title: 'My Studio',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'iaogk375',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
 
   plugins: [
     structureTool({
